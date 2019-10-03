@@ -25,11 +25,6 @@ function App() {
 
         setArray(Array.from(cifrado))
 
-        let tempHash = 0
-      for (let i = 0; i < cifrado.length; i++ ){
-        tempHash += Math.pow(cifrado.charCodeAt(i) * 31, cifrado.length -i)
-        tempHash = tempHash & tempHash
-      }
       setHash(sha1(cifrado))
 
 
@@ -224,20 +219,7 @@ function App() {
       }
       setDecifrado(array.join(''))
       setCifrado(decifrado)
-      let tempHash = 0
-      for (let i = 0; i < cifrado.length; i++ ){
-        tempHash += Math.pow(cifrado.charCodeAt(i) * 31, cifrado.length -i)
-        tempHash = tempHash & tempHash
-      }
       setHash(sha1(cifrado))
-
-
-        //let hash = 0;
-	      //for (let i = 0; i < str.length; i++) {
-		    //hash += Math.pow(str.charCodeAt(i) * 31, str.length - i);
-		    //hash = hash & hash; // Convert to 32bit integer
-	      //}
-
 
     }
 
