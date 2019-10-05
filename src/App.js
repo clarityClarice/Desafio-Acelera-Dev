@@ -226,17 +226,28 @@ function App() {
     async function handleSalvar(event){
       event.preventDefault()
 
-      const awnserObj = {
-        numero_casas: pulos,
-        token: token,
-        cifrado: cifrado,
-        decifrado: decifrado,
-        resumo_criptografico: ''
-      }
-    
-      const awnser = JSON.stringify(awnserObj);
+      //https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=6b2918b603820c4ed69920d3486e7a87d31344c0
 
-      await api.post(`/submit-solution?token=${token}`, awnser)
+      //"Content-Type": "multipart/form-data"
+
+        var obj = { 
+            numero_casas: pulos,
+            token: token,
+            cifrado: cifrado,
+            decifrado: decifrado,
+            resumo_criptografico: hash
+        }
+
+      var answer = JSON.stringify(obj)
+      console.log(answer)
+
+      var response = new FormData()
+      response.append('answer', answer)
+
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=6b2918b603820c4ed69920d3486e7a87d31344c0");
+      request.send(response);
+      //await api.post(`/submit-solution?token=${token}`, response)
     }
     
 
