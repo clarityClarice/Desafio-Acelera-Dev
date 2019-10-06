@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import api from './api'
 import sha1 from 'js-sha1'
+import './style.css'
 
 //6b2918b603820c4ed69920d3486e7a87d31344c0
 
@@ -23,11 +24,7 @@ function App() {
         setCifrado(response.data.cifrado)
         setPulos(response.data.numero_casas)
 
-        setArray(Array.from(cifrado))
-
-      setHash(sha1(cifrado))
-
-
+        setArray(Array.from(response.data.cifrado))
     }
     function handleConverter(event){
       event.preventDefault()
@@ -218,8 +215,7 @@ function App() {
         }
       }
       setDecifrado(array.join(''))
-      setCifrado(decifrado)
-      setHash(sha1(cifrado))
+      setHash(sha1(array.join('')))
 
     }
 
@@ -253,43 +249,60 @@ function App() {
 
   return (
     <> 
-      <h1> Hello World! </h1>
-      <form onSubmit={handleSubmit}>
-            <label> TOKEN* </label>
-            <input
-                id="token"
-                type="text"
-                placeholder="Insira seu token aqui"
-                value={token}
-                onChange={event => setToken(event.target.value)}
-            />
-            <button type="submit" className="btn">Enviar Requisição</button>
-            <p>Clicar 3 vezes em "enviar requisição" para atualizar variáveis</p>
-      </form>
-      <h6>Numero de casas: <span>{pulos}</span></h6>
+
+      <div className="topDiv">
+        <h1> Hello AceleraDev! </h1>
+        <form onSubmit={handleSubmit}>
+              <label> TOKEN* </label>
+              <input
+                  id="token"
+                  type="text"
+                  placeholder="Insira seu token aqui"
+                  value={token}
+                  onChange={event => setToken(event.target.value)}
+              />
+              <button type="submit" className="btn">Enviar Requisição</button>
+        </form>
+        <div className="codeBody">
+          
+          <h6>Numero de casas: <span>{pulos}</span></h6>
+          <hr></hr>
+
+          
+            <h5>Texto cifrado:</h5>
+          <div className="dividerDiv">
+            <span>{cifrado}</span>
+            <button type="submit" className="codeBtn" onClick={handleConverter}>Converter</button>
+          </div>
+          <hr></hr>
+
+          <h5>Texto convertido</h5>
+          <div className="dividerDiv">
+            <span>{convertido}</span>
+            <button type="submit" className="codeBtn" onClick={handleDecifrar}>Converter</button>
+          </div>
+          <hr></hr>
 
 
-      <h5>Texto cifrado:</h5>
-      <span>{cifrado}</span>
-      <button type="submit" className="btn" onClick={handleConverter}>Converter</button>
+          <h5>Texto convertido decifrado</h5>
+          <div className="dividerDiv">
+            <span>{convertido_d}</span>
+            <button type="submit" className="codeBtn" onClick={handleFinal}>Converter</button>
+          </div>
+          <hr></hr>
 
+          <h5>Texto Decifrado final:</h5>
+          <div className="dividerDiv">
+            <span>{decifrado}</span>
+            <button type="submit"className="codeBtn" onClick={handleSalvar}>Enviar</button>
+          </div>
+          <hr></hr>
+          <h5>Hash:</h5>
+          <span>{hash}</span>
+        </div>
+      </div>
 
-
-      <h5>Texto convertido</h5>
-      <span>{convertido}</span>
-      <button type="submit" className="btn" onClick={handleDecifrar}>Converter</button>
-
-      <h5>Texto convertido decifrado</h5>
-      <span>{convertido_d}</span>
-      <button type="submit" className="btn" onClick={handleFinal}>Converter</button>
       
-
-      <h5>Texto Decifrado final:</h5>
-      <span>{decifrado}</span>
-      <button type="submit" className="btn" onClick={handleSalvar}>Enviar</button>
-
-      <h5>Hash:</h5>
-      <span>{hash}</span>
     </>
   );
 }
