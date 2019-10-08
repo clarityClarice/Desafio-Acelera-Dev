@@ -48,3 +48,10 @@ body{
   display: grid;
   grid-template-columns: 4fr 1fr;
 }
+
+.Score{
+  background: paleturquoise;
+  font-style: italic;
+  font-weight: bold;
+  text-align: right;
+}

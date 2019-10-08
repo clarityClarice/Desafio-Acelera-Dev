@@ -13,6 +13,7 @@ function App() {
   const [convertido_d, setConvertido_d] = useState('')
   let [array, setArray] = useState('')
   const [hash, setHash] = useState('')
+  const [score, setScore] = useState('0')
 
 
     async function handleSubmit(event){
@@ -237,7 +238,8 @@ function App() {
       var response = new FormData()
       response.append('answer', blob)
 
-      await api.post(`/submit-solution?token=${token}`, response)
+      const _score = await api.post(`/submit-solution?token=${token}`, response)
+      setScore(_score.data.score)
     }
     
 
@@ -293,6 +295,10 @@ function App() {
           <hr></hr>
           <h5>Hash:</h5>
           <span>{hash}</span>
+          <hr/>
+          <div className="Score">
+            <span>Score: {score}</span>
+          </div>
         </div>
       </div>
 
