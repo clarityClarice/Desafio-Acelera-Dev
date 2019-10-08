@@ -1,10 +1,11 @@
 # Desafio AceleraDev
 ## Codenation - React - Valinhos
 
-------------------------------------------------------------------------------------------------------------------------------------------
 ### Resumo
 Este repositório é referente ao código utilizado para resolver o desafio Acelera Dev.
 A linguagem utilizada é javascript, com uso framewor React.
+
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ### Proposta do desafio
 > Escrever programa, em qualquer linguagem de programação, que faça uma requisição HTTP para a url 'https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=SEU_TOKEN'. O resultado da requisição vai ser um JSON conforme o exemplo:
@@ -26,4 +27,9 @@ A linguagem utilizada é javascript, com uso framewor React.
 >O resultado da submissão vai ser sua nota ou o erro correspondente. Você pode submeter quantas vezes achar necessário, mas a API não vai permitir mais de uma submissão por minuto.
 
 
+----------------------------------------------------------------------------------------------------------------------------------------
+
 ### Funcionalidades da aplicação
+
+ A aplicação web espera o usuário entrar com seu Token gerado pela Codenation.dev. Após entrado o dado, a aplicação envia uma requisição para a api da codenation e espera receber de volta um json contendo, entre os dados, uma mensagem criptografada e o número de casas puladas segundo a criptografia de Júlio Cesar. Estas duas informações são mostradas na tela. Também é gerado um array de chars da string da mensagem criptografada. 
+ Ao clicar em converter, o array da mensagem criptografada é convertido em números e os mesmos são mostrados na tela. Ao clicar no segundo botão "converter", os números retornam o númro de casas puladas, informado pelo json recebido anteriormente. O resultado é mostrado na tela. Ao clicar no terceiro botão "converter", a mensagem descriptografada é mostrada na tela. Por fim, ao clicar em "enviar", a aplicação gera um arquivo .json unindo todas as informações necessárias e envia com o nome "answer" para a api. A api retorna a nota do usuário para finalizar. 
