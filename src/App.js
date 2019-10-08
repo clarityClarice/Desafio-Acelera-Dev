@@ -235,15 +235,14 @@ function App() {
         }
 
       var answer = JSON.stringify(obj)
-      console.log(answer)
+      const blob = new Blob([answer], {
+        type: 'application/json'
+      });
 
       var response = new FormData()
-      response.append('answer', answer)
-
-      var request = new XMLHttpRequest();
-      request.open("POST", "https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=6b2918b603820c4ed69920d3486e7a87d31344c0");
-      request.send(response);
-      //await api.post(`/submit-solution?token=${token}`, response)
+      response.append('answer', blob)
+      
+      await api.post(`/submit-solution?token=${token}`, response)
     }
     
 
