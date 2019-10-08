@@ -3,7 +3,6 @@ import api from './api'
 import sha1 from 'js-sha1'
 import './style.css'
 
-//6b2918b603820c4ed69920d3486e7a87d31344c0
 
 function App() {
   const [token, setToken] = useState()
@@ -222,10 +221,6 @@ function App() {
     async function handleSalvar(event){
       event.preventDefault()
 
-      //https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=6b2918b603820c4ed69920d3486e7a87d31344c0
-
-      //"Content-Type": "multipart/form-data"
-
         var obj = { 
             numero_casas: pulos,
             token: token,
@@ -241,7 +236,7 @@ function App() {
 
       var response = new FormData()
       response.append('answer', blob)
-      
+
       await api.post(`/submit-solution?token=${token}`, response)
     }
     
